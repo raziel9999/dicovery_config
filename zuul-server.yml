@@ -5,8 +5,11 @@ zuul:
   ignoredServices: '*'
   routes:
     echo-service:
-    path: /echo/**
-    url: http://localhost:8091
+      path: /echo/**
+      url: http://localhost:8091
+    holamundo-service:
+      path: /holamundo/**
+      url: http://localhost:8093
   
 #zuul:
 #  ignoredServices: '*'
