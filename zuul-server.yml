@@ -2,14 +2,30 @@ server:
   port: 8080 #the default port used for zuul service
   
 zuul:
-  ignoredServices: '*'
   routes:
-    echo-service:
-      path: /echo/**
-      url: http://localhost:8091
     holamundo-service:
       path: /holamundo/**
-      url: http://localhost:8093
+      serviceId: holamundo-service
+      
+ribbon: # Eureka interface with Ribbon must be disabled so Ribbon will use the list of servers indicated below
+  eureka:
+    enabled: false
+holamundo-service:
+  ribbon:
+    listOfServers: http://localhost:8093,http://localhost:8094
+    # Above is the list of servers and ports where the different instances of the service is deployed, so Ribbon can use them for load balancing      
+      
+      
+#zuul:
+#  ignoredServices: '*'
+#  routes:
+#    echo-service:
+#      path: /echo/**
+#      url: http://localhost:8091
+#    holamundo-service:
+#      path: /holamundo/**
+#      url: http://localhost:8093      
+      
   
 #zuul:
 #  ignoredServices: '*'
