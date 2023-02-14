@@ -9,7 +9,7 @@ zuul:
       
 ribbon: # Eureka interface with Ribbon must be disabled so Ribbon will use the list of servers indicated below
   eureka:
-    enabled: false
+    enabled: true
 holamundo-service:
   ribbon:
     listOfServers: http://localhost:8093,http://localhost:8094
